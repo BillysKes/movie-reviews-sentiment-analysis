@@ -14,3 +14,6 @@ Make sure you have the following prerequisites installed:
   - Python 3.x
   - NLTK library (You can install it using pip install nltk)
 
+
+<h1>Dataset</h1>
+The project uses the nltk movie-reviews dataset. You can find more information and download the dataset here : http://www.nltk.org/nltk_data/
