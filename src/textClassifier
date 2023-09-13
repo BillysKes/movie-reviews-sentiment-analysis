@@ -29,7 +29,6 @@ for category in movie_reviews.categories():
 # Shuffle the documents to ensure randomness
 shuffle(documents)
 
-# Define a function for text preprocessing
 def preprocess_text(text):
     if isinstance(text, list):  # Check if it's a list
         text = " ".join(text)  # Convert the list to a string
