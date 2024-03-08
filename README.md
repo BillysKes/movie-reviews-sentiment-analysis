@@ -1,11 +1,8 @@
-# sentiment analysis
-
 
 
 <h1>Description</h1> 
 
-This NLP project utilizes the Natural Language Toolkit (NLTK) library to perform sentiment analysis on movie reviews using the BagOfWords(BOW) model. It aims to classify movie reviews as either positive or negative based on the text content. Multinomial Naive Bayes and Support Vector Machine are the machine learning algorithms used on this dataset. Sentiment analysis is a valuable application of NLP that can help in understanding public opinion and user sentiments.
-
+The aim of this sentiment analysis project is to classify movie reviews as either positive or negative based on the text content. We utilize the Natural Language Toolkit (NLTK) library to help us perform the analysis, which provides us with the dataset and also with preprocessing tools for data cleaning and transformation. After the transformation of the data with the BagOfWords(BOW) model, we train them with the Multinomial Naive Bayes  and Support Vector Machine.
 
 
 
