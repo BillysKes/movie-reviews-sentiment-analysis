@@ -8,11 +8,6 @@ This NLP project utilizes the Natural Language Toolkit (NLTK) library to perform
 
 
 
-<h1>Prerequisites</h1>
-
-Make sure you have the following prerequisites installed:
-  - Python 3.x
-  - NLTK library (You can install it using pip install nltk)
 
 
 <h1>Dataset</h1>
