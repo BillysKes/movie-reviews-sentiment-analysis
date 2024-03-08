@@ -9,31 +9,12 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn import svm
 
-nltk.download('stopwords')
-nltk.download('punkt')
-
-# Load the movie_reviews dataset
-nltk.download("movie_reviews")
-
-# Get movie review file IDs
-review_ids = movie_reviews.fileids()
-
-documents = []
-
-# Iterate over categories and file IDs to create documents
-for category in movie_reviews.categories():
-    for fileid in movie_reviews.fileids(category):
-        text = list(movie_reviews.words(fileid))
-        documents.append((text, category))
-
-# Shuffle the documents to ensure randomness
-shuffle(documents)
 
 def preprocess_text(text):
     if isinstance(text, list):  # Check if it's a list
         text = " ".join(text)  # Convert the list to a string
     try:
-        stop_words = set(stopwords.words("english"))
+        stop_words = set(stopwords.words("english"))  # a list with the most common english stop words
         words = word_tokenize(text)
         # Create an empty list to store filtered words
         filtered_words = []
@@ -44,26 +25,44 @@ def preprocess_text(text):
     except Exception as e:
         print(f"Error processing text: {text}")
         print(str(e))
-        return ""  # You can choose to skip problematic entries
+        return ""
+
+
+nltk.download('stopwords')
+#nltk.download('punkt')
+# Load the movie_reviews dataset
+nltk.download("movie_reviews")
+
+# Get movie review file IDs, for example : '[neg,pos]/filename.txt'
+review_ids = movie_reviews.fileids()
+documents = []
+
+# Iterate over categories and file IDs to create documents
+# categories -> (positive or negative)
+for category in movie_reviews.categories():
+    for fileid in movie_reviews.fileids(category):
+        text = list(movie_reviews.words(fileid))  # contains a list of every word/character that exist in that review
+        documents.append((text, category))
+
+# Shuffle the documents to ensure randomness
+shuffle(documents)
 
 # Initialize the CountVectorizer
 vectorizer = CountVectorizer()
-
 # Fit and transform the text data
 X_list = []
-for text, _ in documents:
+for text, _ in documents:  # category is excluded before preprocessing step
     preprocessed_text = preprocess_text(text)
     X_list.append(preprocessed_text)
 
-X = vectorizer.fit_transform(X_list)
+X = vectorizer.fit_transform(X_list)  # bag of words model
 
-# Labels
+
 y_list = []
 for _, category in documents:
     y_list.append(category)
 
 y = y_list
-# Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Initialize the multinomial naive bayes classifier
@@ -74,7 +73,6 @@ classifier = svm.SVC(kernel='linear')
 
 # Train the classifier
 classifier.fit(X_train, y_train)
-
 
 # Make predictions
 y_pred = classifier.predict(X_test)
