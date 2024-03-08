@@ -8,4 +8,4 @@ The aim of this sentiment analysis project is to classify movie reviews as eithe
 
 
 <h1>Dataset</h1>
-The project uses the nltk movie-reviews dataset. You can find more information and download the dataset here : http://www.nltk.org/nltk_data/
+In this project we use the nltk movie-reviews dataset. You can find more information and download the dataset here : http://www.nltk.org/nltk_data/
