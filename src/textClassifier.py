@@ -65,19 +65,12 @@ for _, category in documents:
 y = y_list
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Initialize the multinomial naive bayes classifier
-#classifier = MultinomialNB()
-
-# Initialize classification with SVM, kernel=linear
 classifier = svm.SVC(kernel='linear')
 
-# Train the classifier
 classifier.fit(X_train, y_train)
 
-# Make predictions
 y_pred = classifier.predict(X_test)
 
-# Evaluate the model
 accuracy = accuracy_score(y_test, y_pred)
 report = classification_report(y_test, y_pred)
 
